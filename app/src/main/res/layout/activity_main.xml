@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -20,10 +19,9 @@
         tools:srcCompat="@sample/posts.json/data/authorAvatar" />
 
     <ImageButton
-        android:id="@+id/menu"
+        android:id="@+id/imgMenu"
         android:layout_width="15dp"
         android:layout_height="25dp"
-        android:layout_marginTop="@dimen/common_spacing"
         android:layout_marginEnd="@dimen/common_spacing"
         android:background="@android:color/transparent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -36,29 +34,28 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/common_spacing"
         android:layout_marginEnd="@dimen/common_spacing"
-        android:singleLine="true"
         android:ellipsize="end"
+        android:singleLine="true"
         android:text="@sample/posts.json/data/author"
-        app:layout_constraintTop_toTopOf="@id/imgAvatar"
+        app:layout_constraintEnd_toEndOf="@id/imgMenu"
         app:layout_constraintStart_toEndOf="@id/imgAvatar"
-        app:layout_constraintEnd_toEndOf="@id/menu"
-        />
+        app:layout_constraintTop_toTopOf="@id/imgAvatar" />
 
     <TextView
         android:id="@+id/txtPublished"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@sample/posts.json/data/published"
-        app:layout_constraintTop_toBottomOf="@id/txtAuthor"
-        app:layout_constraintStart_toStartOf="@id/txtAuthor" />
+        app:layout_constraintStart_toStartOf="@id/txtAuthor"
+        app:layout_constraintTop_toBottomOf="@id/txtAuthor" />
 
     <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/barrier1"
-        app:layout_constraintTop_toBottomOf="@id/imgAvatar"
         app:barrierDirection="bottom"
-        app:constraint_referenced_ids="imgAvatar, menu, txtPublished" />
+        app:constraint_referenced_ids="imgAvatar, txtPublished, txtAuthor, imgMenu"
+        app:layout_constraintTop_toTopOf="@id/txtContent" />
 
     <TextView
         android:id="@+id/txtContent"
@@ -69,18 +66,80 @@
         android:layout_marginBottom="@dimen/common_spacing"
         android:autoLink="all"
         android:text="@sample/posts.json/data/content"
-        app:layout_constraintStart_toStartOf="@id/imgAvatar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/barrier1"
-        app:layout_constraintBottom_toTopOf="@id/barrier2"/>
+        app:layout_constraintStart_toStartOf="@id/imgAvatar"
+        app:layout_constraintTop_toBottomOf="@id/barrier1" />
 
     <androidx.constraintlayout.widget.Barrier
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/barrier2"
-        app:layout_constraintTop_toBottomOf="@id/txtContent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/common_spacing"
+        android:layout_marginBottom="@dimen/common_spacing"
         app:barrierDirection="bottom"
         app:constraint_referenced_ids="txtContent"
-        />
+        app:layout_constraintTop_toBottomOf="@id/txtContent" />
+
+    <ImageButton
+        android:id="@+id/imgLike"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/common_spacing"
+        android:background="@android:color/transparent"
+        app:layout_constraintStart_toStartOf="@id/imgAvatar"
+        app:layout_constraintTop_toBottomOf="@id/txtContent"
+        app:srcCompat="@drawable/ic_like_24" />
+
+    <TextView
+        android:id="@+id/txtLikesCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="@dimen/common_spacing"
+        android:text="10"
+        app:layout_constraintStart_toEndOf="@id/imgLike"
+        app:layout_constraintTop_toBottomOf="@id/txtContent" />
+
+    <ImageButton
+        android:id="@+id/imgShare"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/common_spacing"
+        android:layout_marginTop="@dimen/common_spacing"
+        android:background="@android:color/transparent"
+        app:layout_constraintStart_toEndOf="@id/txtLikesCount"
+        app:layout_constraintTop_toBottomOf="@id/txtContent"
+        app:srcCompat="@drawable/ic_share_24" />
+
+    <TextView
+        android:id="@+id/txtSharesCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="@dimen/common_spacing"
+        android:text="5"
+        app:layout_constraintStart_toEndOf="@id/imgShare"
+        app:layout_constraintTop_toBottomOf="@id/txtContent" />
+
+    <TextView
+        android:id="@+id/txtViewsCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/common_spacing"
+        android:layout_marginEnd="@dimen/common_spacing"
+        android:text="5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtContent" />
+
+    <ImageView
+        android:id="@+id/imgViews"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/common_spacing"
+        android:layout_marginEnd="8dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintEnd_toStartOf="@id/txtViewsCount"
+        app:layout_constraintTop_toBottomOf="@id/txtContent"
+        app:srcCompat="@drawable/ic_views_24" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
