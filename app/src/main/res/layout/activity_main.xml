@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -54,6 +55,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:barrierDirection="bottom"
+        app:barrierMargin="0dp"
         app:constraint_referenced_ids="imgAvatar, txtPublished, txtAuthor, imgMenu"
         app:layout_constraintTop_toTopOf="@id/txtContent" />
 
@@ -72,11 +74,10 @@
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/barrier2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="@dimen/common_spacing"
-        android:layout_marginBottom="@dimen/common_spacing"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:barrierDirection="bottom"
+        app:barrierMargin="@dimen/common_spacing"
         app:constraint_referenced_ids="txtContent"
         app:layout_constraintTop_toBottomOf="@id/txtContent" />
 
@@ -87,7 +88,7 @@
         android:layout_marginTop="@dimen/common_spacing"
         android:background="@android:color/transparent"
         app:layout_constraintStart_toStartOf="@id/imgAvatar"
-        app:layout_constraintTop_toBottomOf="@id/txtContent"
+        app:layout_constraintTop_toBottomOf="@id/barrier2"
         app:srcCompat="@drawable/ic_like_24" />
 
     <TextView
@@ -98,7 +99,7 @@
         android:layout_marginTop="@dimen/common_spacing"
         android:text="10"
         app:layout_constraintStart_toEndOf="@id/imgLike"
-        app:layout_constraintTop_toBottomOf="@id/txtContent" />
+        app:layout_constraintTop_toBottomOf="@id/barrier2" />
 
     <ImageButton
         android:id="@+id/imgShare"
@@ -108,7 +109,7 @@
         android:layout_marginTop="@dimen/common_spacing"
         android:background="@android:color/transparent"
         app:layout_constraintStart_toEndOf="@id/txtLikesCount"
-        app:layout_constraintTop_toBottomOf="@id/txtContent"
+        app:layout_constraintTop_toBottomOf="@id/barrier2"
         app:srcCompat="@drawable/ic_share_24" />
 
     <TextView
@@ -119,7 +120,7 @@
         android:layout_marginTop="@dimen/common_spacing"
         android:text="5"
         app:layout_constraintStart_toEndOf="@id/imgShare"
-        app:layout_constraintTop_toBottomOf="@id/txtContent" />
+        app:layout_constraintTop_toBottomOf="@id/barrier2" />
 
     <TextView
         android:id="@+id/txtViewsCount"
@@ -129,7 +130,7 @@
         android:layout_marginEnd="@dimen/common_spacing"
         android:text="5"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txtContent" />
+        app:layout_constraintTop_toBottomOf="@id/barrier2" />
 
     <ImageView
         android:id="@+id/imgViews"
@@ -139,7 +140,7 @@
         android:layout_marginEnd="8dp"
         android:background="@android:color/transparent"
         app:layout_constraintEnd_toStartOf="@id/txtViewsCount"
-        app:layout_constraintTop_toBottomOf="@id/txtContent"
+        app:layout_constraintTop_toBottomOf="@id/barrier2"
         app:srcCompat="@drawable/ic_views_24" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
