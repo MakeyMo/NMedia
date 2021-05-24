@@ -1,6 +1,6 @@
 package logicFunctions
 
-open class NumericHandlers {
+object NumericHandlers {
 
     fun countersSimpleView(counter: Int): String {
         var result: Int
