@@ -2,6 +2,7 @@ package ru.netology.trialapplication
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import logicFunctions.NumericHandlers
 import ru.netology.trialapplication.databinding.ActivityMainBinding
 import ru.netology.trialapplication.dto.Post
 
@@ -19,9 +20,10 @@ class MainActivity : AppCompatActivity() {
                 likedByMe = false,
                 likesCount = 10,
                 sharesCount = 5,
-                viewsCount = 5
+                viewsCount = 30
         )
         with(binding) {
+            root.setOnClickListener {  }
             txtAuthor.text = post.author
             txtPublished.text = post.published
             txtContent.text = post.content
@@ -37,11 +39,11 @@ class MainActivity : AppCompatActivity() {
                         if (post.likedByMe) R.drawable.ic_liked_24 else R.drawable.ic_like_24
                 )
                 if (post.likedByMe) post.likesCount += 1 else post.likesCount -= 1
-                txtLikesCount.text = post.likesCountSimpleView(post.likesCount)
+                    txtLikesCount.text = NumericHandlers.countersSimpleView(post.likesCount)
             }
             imgShare?.setOnClickListener {
                 post.sharesCount += 1
-                txtSharesCount.text = post.sharesCountSimpleView(post.sharesCount)
+                txtSharesCount.text = NumericHandlers.countersSimpleView(post.sharesCount)
             }
         }
     }
