@@ -22,19 +22,17 @@ class MainActivity : AppCompatActivity() {
                 txtLikesCount.text = post.likesCount.toString()
                 txtSharesCount.text = post.sharesCount.toString()
                 txtViewsCount.text = post.viewsCount.toString()
-                if (post.likedByMe) {
-                    imgLike.setImageResource(R.drawable.ic_liked_24)
-                }
+//                if (post.likedByMe) {
+//                    imgLike.setImageResource(R.drawable.ic_liked_24)
+//                }
                 imgLike.setOnClickListener {
-                    post.likedByMe = !post.likedByMe
+                    viewModel.like()
                     imgLike.setImageResource(
                         if (post.likedByMe) R.drawable.ic_liked_24 else R.drawable.ic_like_24
                     )
-                    if (post.likedByMe) post.likesCount += 1 else post.likesCount -= 1
-                    txtLikesCount.text = NumericHandlers.countersSimpleView(post.likesCount)
                 }
                 imgShare.setOnClickListener {
-                    post.sharesCount += 1
+                    viewModel.share()
                     txtSharesCount.text = NumericHandlers.countersSimpleView(post.sharesCount)
                 }
             }
