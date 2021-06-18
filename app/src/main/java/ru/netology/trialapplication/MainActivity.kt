@@ -36,10 +36,8 @@ class MainActivity : AppCompatActivity() {
                 imgLike.setImageResource(
                         if (post.likedByMe) R.drawable.ic_liked_24 else R.drawable.ic_like_24
                 )
-                imgShare.setOnClickListener {
-                    viewModel.share()
-                    txtSharesCount.text = NumericHandlers.countersSimpleView(post.sharesCount)
-                }
+                txtLikesCount.text = NumericHandlers.countersSimpleView(post.likesCount)
+                txtSharesCount.text = NumericHandlers.countersSimpleView(post.sharesCount)
             }
         }
     }
