@@ -14,6 +14,14 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val viewModel: PostViewModel by viewModels()
+        with(binding) {
+            imgLike.setOnClickListener {
+                viewModel.like()
+            }
+            imgShare.setOnClickListener {
+                viewModel.share()
+            }
+        }
         viewModel.data.observe(this) { post ->
             with(binding) {
                 txtAuthor.text = post.author
@@ -25,12 +33,9 @@ class MainActivity : AppCompatActivity() {
 //                if (post.likedByMe) {
 //                    imgLike.setImageResource(R.drawable.ic_liked_24)
 //                }
-                imgLike.setOnClickListener {
-                    viewModel.like()
-                    imgLike.setImageResource(
+                imgLike.setImageResource(
                         if (post.likedByMe) R.drawable.ic_liked_24 else R.drawable.ic_like_24
-                    )
-                }
+                )
                 imgShare.setOnClickListener {
                     viewModel.share()
                     txtSharesCount.text = NumericHandlers.countersSimpleView(post.sharesCount)
